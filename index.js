@@ -20,13 +20,15 @@ function updateCounter() {
     drillCostElement.textContent = `Drill Upgrade Cost: ${drillCost} Asteroids`;
     const dynamiteCostElement = document.getElementById("dynamiteCost");
     dynamiteCostElement.textContent = `Dynamite Upgrade Cost: ${dynamiteCost} Asteroids`;
-    
-    // Update localStorage with the current counterValue, clickMultiplier, and upgradeCost
+    const telescopeCostElement = document.getElementById("telescopeCost");
+    telescopeCostElement.textContent = `Telescope Upgrade Cost: ${telescopeCost} Asteroids`;
+
     localStorage.setItem("counterValue", counterValue);
     localStorage.setItem("clickMultiplier", clickMultiplier);
     localStorage.setItem("clicksCost", clicksCost);
     localStorage.setItem("drillCost", drillCost);
     localStorage.setItem("dynamiteCost", dynamiteCost);
+    localStorage.setItem("telescopeCost", telescopeCost);
 }
 
 let clickMultiplier = 1;
@@ -37,21 +39,18 @@ function increase() {
 }
 
 let clicksCost = 100; // Initial cost
-const clicksCostIncreasePercentage = 70;
+const clicksCostIncreasePercentage = 100;
 
 function purchaseClicks() {
-    // Check if the player has enough resources to purchase the upgrade
+
     if (counterValue >= clicksCost) {
-        // Deduct the cost from the counterValue
+
         counterValue -= clicksCost;
-        
-        // Increase the click multiplier by 1 (or any other desired value)
+
         clickMultiplier += 0.5;
-        
-        // Increase the upgrade cost by 20%
+
         clicksCost = Math.round(clicksCost * (1 + clicksCostIncreasePercentage / 100));
-        
-        // Update the display
+
         updateCounter();
     } else {
         alert("Not enough asteroids to purchase the upgrade!");
@@ -59,48 +58,60 @@ function purchaseClicks() {
 }
 
 let drillCost = 200;
-const drillCostIncreasePercentage = 70;
+const drillCostIncreasePercentage = 100;
 
 function purchaseDrill() {
-    // Check if the player has enough resources to purchase the upgrade
+
     if (counterValue >= drillCost) {
-        // Deduct the cost from the counterValue
+
         counterValue -= drillCost;
-        
-        // Increase the click multiplier by 1 (or any other desired value)
+
         clickMultiplier += 0.5;
-        
-        // Increase the upgrade cost by 20%
+
         drillCost = Math.round(drillCost * (1 + drillCostIncreasePercentage / 100));
-        
-        // Update the display
+
         updateCounter();
     } else {
         alert("Not enough asteroids to purchase the upgrade!");
     }
 }
 
-let dynamiteCost = 300;
-const dynamiteCostIncreasePercentage = 70;
+let dynamiteCost = 500;
+const dynamiteCostIncreasePercentage = 100;
 
 function purchaseDynamite() {
-    // Check if the player has enough resources to purchase the upgrade
+
     if (counterValue >= dynamiteCost) {
-        // Deduct the cost from the counterValue
+
         counterValue -= dynamiteCost;
-        
-        // Increase the click multiplier by 1 (or any other desired value)
+
         clickMultiplier += 1;
-        
-        // Increase the upgrade cost by 20%
         dynamiteCost = Math.round(dynamiteCost * (1 + dynamiteCostIncreasePercentage / 100));
-        
-        // Update the display
+
         updateCounter();
     } else {
         alert("Not enough asteroids to purchase the upgrade!");
     }
 }
+
+let telescopeCost = 1000;
+const telescopeCostIncreasePercentage = 100;
+
+function purchaseTelescope() {
+
+    if (counterValue >= telescopeCost) {
+
+        counterValue -= telescopeCost;
+
+        clickMultiplier += 1.5;
+        telescopeCost = Math.round(telescopeCost * (1 + telescopeCostIncreasePercentage / 100));
+
+        updateCounter();
+    } else {
+        alert("Not enough asteroids to purchase the upgrade!");
+    }
+}
+
 
 
 // Use window.onload to run code after the page has fully loaded
@@ -110,5 +121,6 @@ window.onload = function() {
     clicksCost = parseInt(localStorage.getItem("clicksCost")) || 100;
     drillCost = parseInt(localStorage.getItem("drillCost")) || 200;
     dynamiteCost = parseInt(localStorage.getItem("dynamiteCost")) || 500;
+    telescopeCost = parseInt(localStorage.getItem("telescopeCost")) || 1000;
     updateCounter();
 };
