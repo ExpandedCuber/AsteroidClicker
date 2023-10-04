@@ -46,7 +46,7 @@ function purchaseClicks() {
         counterValue -= clicksCost;
         
         // Increase the click multiplier by 1 (or any other desired value)
-        clickMultiplier += 1;
+        clickMultiplier += 0.5;
         
         // Increase the upgrade cost by 20%
         clicksCost = Math.round(clicksCost * (1 + clicksCostIncreasePercentage / 100));
@@ -68,7 +68,7 @@ function purchaseDrill() {
         counterValue -= drillCost;
         
         // Increase the click multiplier by 1 (or any other desired value)
-        clickMultiplier += 1;
+        clickMultiplier += 0.5;
         
         // Increase the upgrade cost by 20%
         drillCost = Math.round(drillCost * (1 + drillCostIncreasePercentage / 100));
@@ -90,7 +90,7 @@ function purchaseDynamite() {
         counterValue -= dynamiteCost;
         
         // Increase the click multiplier by 1 (or any other desired value)
-        clickMultiplier += 2;
+        clickMultiplier += 1;
         
         // Increase the upgrade cost by 20%
         dynamiteCost = Math.round(dynamiteCost * (1 + dynamiteCostIncreasePercentage / 100));
